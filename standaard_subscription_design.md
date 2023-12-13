@@ -14,3 +14,14 @@ Een subscriptie wordt bij oplevering voorzien van de volgende functionaliteiten:
 
 Management van Virtual Machines (VM) wordt standaard gedaan vanuit een management server in de Platform subscriptie. Deze management server is alleen toegankelijk via een Azure Bastion dienst. Deze toegang wordt gelogd, is alleen mogelijk op basis van RBAC en is voorzien van MFA. Vanaf de management server is het mogelijk op de workload VMs in te loggen. Deze toegang wordt met behulp van NSGs mogelijk gemaakt. Indien gewenst is het ook mogelijk een management server in het management subnet van de landing zone uit te rollen en via Azure Bastion op die management server in te loggen. Dit is een verplichte toepassing voor die landing zones die voor leveranciers bedoeld zijn. 
 
+**Logisch diagram**
+Onderstaand diagram geeft de netwerk architectuur weer van een productie en non-productie subscriptie die verbonden is met de Hub.  
+
+|INT |	Source | Target |	Omschrijving |	Protocol |	Port | Appl. Layer protocol |
+------------------------------------------------------------------------------------- 
+ INT01 | Extern | Externe FW	| Secure webverkeer van buiten | TCP | 443 | HTTPS |
+ INT02 | On-Prem | Azure | Verkeer van On-prem naar Azure	| ALL |	ALL | ALL |
+ INT02 | Azure Spoke | Azure Spoke | Spoke-to-Spoke verkeer wordt alleen gerouteerd door de FW | ALL | ALL | ALL |
+ 
+
+
