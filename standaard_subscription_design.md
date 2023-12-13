@@ -1,7 +1,7 @@
---
+---
 layout: default
 title: Standaard Landing Zone subscription design
---
+---
 **Functionele beschrijving**
 Dit ontwerp beschrijft een landing zone subscriptie met al de standaard geleverde resources die standaard aanwezig zijn in de subscriptie op het moment dat deze uitgerold wordt. 
 Een landing zone bestaat uit en productie subscriptie en optioneel een non-productie subscriptie welke onder een bepaalde Management Group geplaatst worden. Welke Management Group dat is, wordt bepaald door de workload en de informatie die in de subscriptie opgeslagen wordt. Deze subscripties zijn binnen de Hub-Spoke netwerk topologie een Spoke. 
