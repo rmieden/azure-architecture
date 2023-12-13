@@ -22,6 +22,9 @@ Onderstaand diagram geeft de netwerk architectuur weer van een productie en non-
  INT01 | Extern | Externe FW	| Secure webverkeer van buiten | TCP | 443 | HTTPS |
  INT02 | On-Prem | Azure | Verkeer van On-prem naar Azure	| ALL |	ALL | ALL |
  INT02 | Azure Spoke | Azure Spoke | Spoke-to-Spoke verkeer wordt alleen gerouteerd door de FW | ALL | ALL | ALL |
- 
+
+Het Spoke-to-Spoke verkeer hoeft niet gefilterd te worden door de Firewall in de Hub. Deze filtering vindt namelijk plaatst op het Subnet in de Spoke. Dit zorgt ervoor dat het onderscheid in VNETs, welke noodzakelijk is vanwege het feit dat een VNET niet subscriptie overstijgend is, geen negatieve impact heeft op het zoneringsconcept. Al het inbound verkeer naar een subnet zal verplicht gefiltert moeten worden, waarbij elk Subnet eindigt met een deny all regel, om te voorkomen dat de default VirtualNetwork Allow regel in een NSG verkeer tussen VNETs standaard toelaat. De FortiGate Firewall fungeert dus alleen als router tussen de VNETs. 
+
+
 
 
